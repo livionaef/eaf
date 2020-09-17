@@ -33,7 +33,7 @@ public class MovieRepositoryImpl implements MovieRepository {
 		save(new Movie("The Boss Baby",           LocalDate.of(2017, Month.AUGUST, 3),     priceCategoryRepo.findById(2L).get()));
 		save(new Movie("Pirates of the Caribean: Salazar's Revenge", 
 		                                          LocalDate.of(2017, Month.OCTOBER, 2),    priceCategoryRepo.findById(1L).get()));
-		save(new Movie("Die göttliche Ordnung",   LocalDate.of(2017, Month.SEPTEMBER, 21), priceCategoryRepo.findById(1L).get()));
+		save(new Movie("Die göttliche Ordnung",  LocalDate.of(2017, Month.SEPTEMBER, 21), priceCategoryRepo.findById(1L).get()));
 
 		save(new Movie("Loving Vincent",          LocalDate.of(2018, Month.MAY, 25),       priceCategoryRepo.findById(1L).get()));
 		save(new Movie("Fast & Furious 7",        LocalDate.of(2018, Month.AUGUST, 13),    priceCategoryRepo.findById(1L).get()));
