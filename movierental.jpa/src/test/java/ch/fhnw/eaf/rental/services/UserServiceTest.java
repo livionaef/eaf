@@ -32,7 +32,7 @@ public class UserServiceTest {
 	@Test
 	public void testGetAllUsers() {
 		List<User> users = userService.getAllUsers();
-		assertEquals(4, users.size());
+		assertEquals(5, users.size());
 	}
 
 	@Test
@@ -42,7 +42,7 @@ public class UserServiceTest {
 		user = userService.save(user);
 		assertNotNull("id must be assigned after insertion into db", user.getId());
 		List<User> users = userService.getAllUsers();
-		assertEquals(5, users.size());
+		assertEquals(6, users.size());
 	}
 
 	@Test

@@ -1,5 +1,10 @@
 package ch.fhnw.eaf.rental.model;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue(value="Regular")
 public class PriceCategoryRegular extends PriceCategory {
 
 	@Override
