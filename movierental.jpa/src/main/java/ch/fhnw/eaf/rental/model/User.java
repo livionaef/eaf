@@ -33,7 +33,7 @@ public class User {
 	@Column(name="USER_EMAIL")
 	private String email;
 	
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="user", cascade = CascadeType.REMOVE)
 	private List<Rental> rentals;
 	
 	// nicht-privater no-arg Konstruktor
