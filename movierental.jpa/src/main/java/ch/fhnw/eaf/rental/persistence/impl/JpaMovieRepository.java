@@ -41,17 +41,17 @@ public class JpaMovieRepository implements MovieRepository {
 
 	@Override
 	public void delete(Movie movie) {
-		em.remove(movie);		
+		em.remove(em.merge(movie));		
 	}
 
 	@Override
 	public boolean existsById(Long id) {
-//		return findById(id).isPresent(); -> Entit‰t wird in Persistenzkontext geladen!
+//		return findById(id).isPresent(); -> Entit√§t wird in Persistenzkontext geladen!
 		TypedQuery<Long> query = em.createQuery(
 				"SELECT COUNT(m) FROM Movie m WHERE m.id = :id",
 				Long.class);
 		query.setParameter("id", id);
-		return query.getSingleResult() > 0; // -> Entit‰t wird nicht in Persistenzkontext geladen!
+		return query.getSingleResult() > 0; // -> Entit√§t wird nicht in Persistenzkontext geladen!
 	}
 
 	@Override
