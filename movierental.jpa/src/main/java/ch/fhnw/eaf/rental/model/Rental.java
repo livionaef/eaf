@@ -2,18 +2,44 @@ package ch.fhnw.eaf.rental.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Rental.class)
+@Entity
+@Table(name = "RENTALS")
 public class Rental {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="RENTAL_ID")
 	private Long id;
 
+	@OneToOne
+	@JoinColumn(name="MOVIE_ID")
 	private Movie movie;
+	
+	@ManyToOne // Rental is the owner of the relationship
+	@JoinColumn(name="USER_ID")
 	private User user;
+	
+	@Column(name="RENTAL_RENTALDATE")
 	private LocalDate rentalDate;
+	
+	@Column(name="RENTAL_RENTALDAYS")
 	private int rentalDays;
 
+	// nicht-privater no-arg Konstruktor
 	public Rental() {
 		this.rentalDate = LocalDate.now();
 	}

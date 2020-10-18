@@ -3,17 +3,41 @@ package ch.fhnw.eaf.rental.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Rental.class)
+@Entity
+@Table(name = "USERS")
 public class User {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="USER_ID")
 	private Long id;
 
+	@Column(name="USER_NAME")
 	private String lastName;
+	
+	@Column(name="USER_FIRSTNAME")
 	private String firstName;
+	
+	@Column(name="USER_EMAIL")
 	private String email;
+	
+	@OneToMany(mappedBy="user", cascade = CascadeType.REMOVE)
 	private List<Rental> rentals;
+	
+	// nicht-privater no-arg Konstruktor
+	protected User() { }
 
 	public User(String lastName, String firstName) {
 		this.lastName = lastName;
